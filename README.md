@@ -3,6 +3,37 @@
 [![GitHub Actions Status](https://github.com/mavlink/MAVSDK/workflows/Build%20and%20Test/badge.svg?branch=main)](https://github.com/mavlink/MAVSDK/actions?query=branch%3Amain)
 [![Coverage Status](https://coveralls.io/repos/github/mavlink/MAVSDK/badge.svg?branch=main)](https://coveralls.io/github/mavlink/MAVSDK?branch=main)
 
+## Build
+* [MAVSDK build 방법](https://mavsdk.mavlink.io/main/en/cpp/guide/build.html)
+```bash
+sudo apt-get update
+sudo apt-get install build-essential cmake git
+cd ~/projects
+git clone https://github.com/mavlink/MAVSDK.git
+cd MAVSDK
+git checkout v1.4.10
+git submodule update --init --recursive
+#cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=install -Bbuild/default -H.
+#cmake -Bbuild/default -DMAVLINK_DIALECT=mydialect -H.
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=install -Bbuild/default -DMAVLINK_DIALECT=ardupilotmega -H.
+
+cmake --build build/default --target install
+```
+
+* takeoff_and_land build
+```bash
+cd ~/projects/MAVSDK/examples
+cd takeoff_and_land/
+cmake -Bbuild -DCMAKE_PREFIX_PATH=../../install -H.
+cmake --build build -j4
+cd build
+./takeoff_and_land udp://:14540
+# 새 터미널 열기. px4 sitl 실행
+cd ~/projects/PX4-Autopilot
+make px4_sitl jmavsim
+```
+
+
 ## Description
 
 [MAVSDK](https://mavsdk.mavlink.io/main/en/) is a set of libraries providing a high-level API to [MAVLink](https://mavlink.io/en/).
