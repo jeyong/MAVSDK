@@ -47,6 +47,7 @@ public:
     MOCK_CONST_METHOD1(subscribe_health_all_ok, void(Telemetry::HealthAllOkCallback)){};
     MOCK_CONST_METHOD1(subscribe_unix_epoch_time, void(Telemetry::UnixEpochTimeCallback)){};
     MOCK_CONST_METHOD1(subscribe_vtol_state, void(Telemetry::VtolStateCallback)){};
+    MOCK_CONST_METHOD1(subscribe_subak_info, void(Telemetry::SubakInfoCallback)){};
 
     MOCK_METHOD1(set_rate_position, Telemetry::Result(double)){};
     MOCK_METHOD1(set_rate_home, Telemetry::Result(double)){};

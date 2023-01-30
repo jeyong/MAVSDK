@@ -18,8 +18,8 @@ git checkout v1.4.10
 git submodule update --init --recursive
 
 
-#cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=install -DBUILD_SHARED_LIBS=OFF -DBUILD_MAVSDK_SERVER=ON -Bbuild/default -H.
-#cmake --build build/default -j8
+#cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=install -DBUILD_SHARED_LIBS=OFF -DBUILD_MAVSDK_SERVER=ON -Bbuild/default -DMAVLINK_DIALECT=subak -H.
+#cmake --build build/default -j8 --target install
 
 #cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=install -Bbuild/default -H.
 #cmake -Bbuild/default -DMAVLINK_DIALECT=mydialect -H.
