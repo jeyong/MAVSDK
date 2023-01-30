@@ -15,7 +15,7 @@ git checkout v1.4.10
 git submodule update --init --recursive
 #cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=install -Bbuild/default -H.
 #cmake -Bbuild/default -DMAVLINK_DIALECT=mydialect -H.
-cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=install -Bbuild/default -DMAVLINK_DIALECT=ardupilotmega -H.
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=install -Bbuild/default -DMAVLINK_DIALECT=subak -H.
 
 cmake --build build/default --target install
 ```
@@ -32,6 +32,20 @@ cd build
 cd ~/projects/PX4-Autopilot
 make px4_sitl jmavsim
 ```
+
+* subak_info build
+```bash
+cd ~/projects/MAVSDK/examples
+cd subak_info/
+cmake -Bbuild -DCMAKE_PREFIX_PATH=../../install -H.
+cmake --build build -j4
+cd build
+./subak_info udp://:14540
+# 새 터미널 열기. px4 sitl 실행
+cd ~/projects/PX4-Autopilot
+make px4_sitl jmavsim
+```
+
 
 
 ## Description

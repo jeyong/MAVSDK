@@ -144,6 +144,7 @@ public:
     void subscribe_distance_sensor(Telemetry::DistanceSensorCallback& callback);
     void subscribe_scaled_pressure(Telemetry::ScaledPressureCallback& callback);
     void subscribe_heading(Telemetry::HeadingCallback& callback);
+    // void subscribe_subak_info(Telemetry::SubakInfoCallback& callback);
 
     TelemetryImpl(const TelemetryImpl&) = delete;
     TelemetryImpl& operator=(const TelemetryImpl&) = delete;
@@ -209,6 +210,7 @@ private:
     void process_odometry(const mavlink_message_t& message);
     void process_distance_sensor(const mavlink_message_t& message);
     void process_scaled_pressure(const mavlink_message_t& message);
+    void process_subak_info(const mavlink_message_t& message);
     void receive_param_cal_gyro(MAVLinkParameters::Result result, int value);
     void receive_param_cal_accel(MAVLinkParameters::Result result, int value);
     void receive_param_cal_mag(MAVLinkParameters::Result result, int value);
