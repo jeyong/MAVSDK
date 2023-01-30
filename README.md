@@ -8,11 +8,19 @@
 ```bash
 sudo apt-get update
 sudo apt-get install build-essential cmake git
+sudo apt-get install protobuf-compiler-grpc
+pip3 install --user protoc-gen-mavsdk  #proto generation을 위해서
+
 cd ~/projects
-git clone https://github.com/mavlink/MAVSDK.git
+git clone https://github.com/jeyong/MAVSDK.git
 cd MAVSDK
 git checkout v1.4.10
 git submodule update --init --recursive
+
+
+#cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=install -DBUILD_SHARED_LIBS=OFF -DBUILD_MAVSDK_SERVER=ON -Bbuild/default -H.
+#cmake --build build/default -j8
+
 #cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=install -Bbuild/default -H.
 #cmake -Bbuild/default -DMAVLINK_DIALECT=mydialect -H.
 cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=install -Bbuild/default -DMAVLINK_DIALECT=subak -H.
@@ -46,7 +54,14 @@ cd ~/projects/PX4-Autopilot
 make px4_sitl jmavsim
 ```
 
+* generate telemetry.h for new proto
+```
+# mavsdk_server 빌드
+cd MAVSDK/tool
+./generate_from_protos.sh
 
+# telemetry.h 파일에 subakinfo 생성 확인
+```
 
 ## Description
 

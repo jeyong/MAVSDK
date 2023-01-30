@@ -75,7 +75,7 @@ public:
 
     TelemetryServer::Result publish_extended_sys_state(
         TelemetryServer::VtolState vtol_state, TelemetryServer::LandedState landed_state);
-
+    TelemetryServer::Result publish_subak_info(TelemetryServer::SubakInfo subak_info);
 private:
     std::chrono::time_point<std::chrono::steady_clock> _start_time;
 

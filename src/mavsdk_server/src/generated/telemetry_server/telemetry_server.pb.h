@@ -48,7 +48,7 @@ struct TableStruct_telemetry_5fserver_2ftelemetry_5fserver_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[59]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[62]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -199,6 +199,12 @@ extern PublishStatusTextRequestDefaultTypeInternal _PublishStatusTextRequest_def
 class PublishStatusTextResponse;
 struct PublishStatusTextResponseDefaultTypeInternal;
 extern PublishStatusTextResponseDefaultTypeInternal _PublishStatusTextResponse_default_instance_;
+class PublishSubakInfoRequest;
+struct PublishSubakInfoRequestDefaultTypeInternal;
+extern PublishSubakInfoRequestDefaultTypeInternal _PublishSubakInfoRequest_default_instance_;
+class PublishSubakInfoResponse;
+struct PublishSubakInfoResponseDefaultTypeInternal;
+extern PublishSubakInfoResponseDefaultTypeInternal _PublishSubakInfoResponse_default_instance_;
 class PublishSysStatusRequest;
 struct PublishSysStatusRequestDefaultTypeInternal;
 extern PublishSysStatusRequestDefaultTypeInternal _PublishSysStatusRequest_default_instance_;
@@ -226,6 +232,9 @@ extern ScaledPressureDefaultTypeInternal _ScaledPressure_default_instance_;
 class StatusText;
 struct StatusTextDefaultTypeInternal;
 extern StatusTextDefaultTypeInternal _StatusText_default_instance_;
+class SubakInfo;
+struct SubakInfoDefaultTypeInternal;
+extern SubakInfoDefaultTypeInternal _SubakInfo_default_instance_;
 class TelemetryServerResult;
 struct TelemetryServerResultDefaultTypeInternal;
 extern TelemetryServerResultDefaultTypeInternal _TelemetryServerResult_default_instance_;
@@ -286,6 +295,8 @@ template<> ::mavsdk::rpc::telemetry_server::PublishScaledImuRequest* Arena::Crea
 template<> ::mavsdk::rpc::telemetry_server::PublishScaledImuResponse* Arena::CreateMaybeMessage<::mavsdk::rpc::telemetry_server::PublishScaledImuResponse>(Arena*);
 template<> ::mavsdk::rpc::telemetry_server::PublishStatusTextRequest* Arena::CreateMaybeMessage<::mavsdk::rpc::telemetry_server::PublishStatusTextRequest>(Arena*);
 template<> ::mavsdk::rpc::telemetry_server::PublishStatusTextResponse* Arena::CreateMaybeMessage<::mavsdk::rpc::telemetry_server::PublishStatusTextResponse>(Arena*);
+template<> ::mavsdk::rpc::telemetry_server::PublishSubakInfoRequest* Arena::CreateMaybeMessage<::mavsdk::rpc::telemetry_server::PublishSubakInfoRequest>(Arena*);
+template<> ::mavsdk::rpc::telemetry_server::PublishSubakInfoResponse* Arena::CreateMaybeMessage<::mavsdk::rpc::telemetry_server::PublishSubakInfoResponse>(Arena*);
 template<> ::mavsdk::rpc::telemetry_server::PublishSysStatusRequest* Arena::CreateMaybeMessage<::mavsdk::rpc::telemetry_server::PublishSysStatusRequest>(Arena*);
 template<> ::mavsdk::rpc::telemetry_server::PublishSysStatusResponse* Arena::CreateMaybeMessage<::mavsdk::rpc::telemetry_server::PublishSysStatusResponse>(Arena*);
 template<> ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeRequest* Arena::CreateMaybeMessage<::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeRequest>(Arena*);
@@ -295,6 +306,7 @@ template<> ::mavsdk::rpc::telemetry_server::RawGps* Arena::CreateMaybeMessage<::
 template<> ::mavsdk::rpc::telemetry_server::RcStatus* Arena::CreateMaybeMessage<::mavsdk::rpc::telemetry_server::RcStatus>(Arena*);
 template<> ::mavsdk::rpc::telemetry_server::ScaledPressure* Arena::CreateMaybeMessage<::mavsdk::rpc::telemetry_server::ScaledPressure>(Arena*);
 template<> ::mavsdk::rpc::telemetry_server::StatusText* Arena::CreateMaybeMessage<::mavsdk::rpc::telemetry_server::StatusText>(Arena*);
+template<> ::mavsdk::rpc::telemetry_server::SubakInfo* Arena::CreateMaybeMessage<::mavsdk::rpc::telemetry_server::SubakInfo>(Arena*);
 template<> ::mavsdk::rpc::telemetry_server::TelemetryServerResult* Arena::CreateMaybeMessage<::mavsdk::rpc::telemetry_server::TelemetryServerResult>(Arena*);
 template<> ::mavsdk::rpc::telemetry_server::VelocityBody* Arena::CreateMaybeMessage<::mavsdk::rpc::telemetry_server::VelocityBody>(Arena*);
 template<> ::mavsdk::rpc::telemetry_server::VelocityNed* Arena::CreateMaybeMessage<::mavsdk::rpc::telemetry_server::VelocityNed>(Arena*);
@@ -3086,6 +3098,154 @@ class PublishUnixEpochTimeRequest final :
 };
 // -------------------------------------------------------------------
 
+class PublishSubakInfoRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:mavsdk.rpc.telemetry_server.PublishSubakInfoRequest) */ {
+ public:
+  inline PublishSubakInfoRequest() : PublishSubakInfoRequest(nullptr) {}
+  ~PublishSubakInfoRequest() override;
+  explicit constexpr PublishSubakInfoRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  PublishSubakInfoRequest(const PublishSubakInfoRequest& from);
+  PublishSubakInfoRequest(PublishSubakInfoRequest&& from) noexcept
+    : PublishSubakInfoRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline PublishSubakInfoRequest& operator=(const PublishSubakInfoRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline PublishSubakInfoRequest& operator=(PublishSubakInfoRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const PublishSubakInfoRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const PublishSubakInfoRequest* internal_default_instance() {
+    return reinterpret_cast<const PublishSubakInfoRequest*>(
+               &_PublishSubakInfoRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    17;
+
+  friend void swap(PublishSubakInfoRequest& a, PublishSubakInfoRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(PublishSubakInfoRequest* other) {
+    if (other == this) return;
+    if (GetOwningArena() == other->GetOwningArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(PublishSubakInfoRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline PublishSubakInfoRequest* New() const final {
+    return new PublishSubakInfoRequest();
+  }
+
+  PublishSubakInfoRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<PublishSubakInfoRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const PublishSubakInfoRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const PublishSubakInfoRequest& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to, const ::PROTOBUF_NAMESPACE_ID::Message&from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(PublishSubakInfoRequest* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "mavsdk.rpc.telemetry_server.PublishSubakInfoRequest";
+  }
+  protected:
+  explicit PublishSubakInfoRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kSubakInfoFieldNumber = 1,
+  };
+  // .mavsdk.rpc.telemetry_server.SubakInfo subak_info = 1;
+  bool has_subak_info() const;
+  private:
+  bool _internal_has_subak_info() const;
+  public:
+  void clear_subak_info();
+  const ::mavsdk::rpc::telemetry_server::SubakInfo& subak_info() const;
+  PROTOBUF_MUST_USE_RESULT ::mavsdk::rpc::telemetry_server::SubakInfo* release_subak_info();
+  ::mavsdk::rpc::telemetry_server::SubakInfo* mutable_subak_info();
+  void set_allocated_subak_info(::mavsdk::rpc::telemetry_server::SubakInfo* subak_info);
+  private:
+  const ::mavsdk::rpc::telemetry_server::SubakInfo& _internal_subak_info() const;
+  ::mavsdk::rpc::telemetry_server::SubakInfo* _internal_mutable_subak_info();
+  public:
+  void unsafe_arena_set_allocated_subak_info(
+      ::mavsdk::rpc::telemetry_server::SubakInfo* subak_info);
+  ::mavsdk::rpc::telemetry_server::SubakInfo* unsafe_arena_release_subak_info();
+
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.telemetry_server.PublishSubakInfoRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::mavsdk::rpc::telemetry_server::SubakInfo* subak_info_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_telemetry_5fserver_2ftelemetry_5fserver_2eproto;
+};
+// -------------------------------------------------------------------
+
 class PublishPositionResponse final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:mavsdk.rpc.telemetry_server.PublishPositionResponse) */ {
  public:
@@ -3130,7 +3290,7 @@ class PublishPositionResponse final :
                &_PublishPositionResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    17;
+    18;
 
   friend void swap(PublishPositionResponse& a, PublishPositionResponse& b) {
     a.Swap(&b);
@@ -3278,7 +3438,7 @@ class PublishHomeResponse final :
                &_PublishHomeResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    18;
+    19;
 
   friend void swap(PublishHomeResponse& a, PublishHomeResponse& b) {
     a.Swap(&b);
@@ -3426,7 +3586,7 @@ class PublishSysStatusResponse final :
                &_PublishSysStatusResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    19;
+    20;
 
   friend void swap(PublishSysStatusResponse& a, PublishSysStatusResponse& b) {
     a.Swap(&b);
@@ -3574,7 +3734,7 @@ class PublishExtendedSysStateResponse final :
                &_PublishExtendedSysStateResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    20;
+    21;
 
   friend void swap(PublishExtendedSysStateResponse& a, PublishExtendedSysStateResponse& b) {
     a.Swap(&b);
@@ -3722,7 +3882,7 @@ class PublishRawGpsResponse final :
                &_PublishRawGpsResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    21;
+    22;
 
   friend void swap(PublishRawGpsResponse& a, PublishRawGpsResponse& b) {
     a.Swap(&b);
@@ -3870,7 +4030,7 @@ class PublishBatteryResponse final :
                &_PublishBatteryResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    22;
+    23;
 
   friend void swap(PublishBatteryResponse& a, PublishBatteryResponse& b) {
     a.Swap(&b);
@@ -4018,7 +4178,7 @@ class PublishStatusTextResponse final :
                &_PublishStatusTextResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    23;
+    24;
 
   friend void swap(PublishStatusTextResponse& a, PublishStatusTextResponse& b) {
     a.Swap(&b);
@@ -4166,7 +4326,7 @@ class PublishOdometryResponse final :
                &_PublishOdometryResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    24;
+    25;
 
   friend void swap(PublishOdometryResponse& a, PublishOdometryResponse& b) {
     a.Swap(&b);
@@ -4314,7 +4474,7 @@ class PublishPositionVelocityNedResponse final :
                &_PublishPositionVelocityNedResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    25;
+    26;
 
   friend void swap(PublishPositionVelocityNedResponse& a, PublishPositionVelocityNedResponse& b) {
     a.Swap(&b);
@@ -4462,7 +4622,7 @@ class PublishGroundTruthResponse final :
                &_PublishGroundTruthResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    26;
+    27;
 
   friend void swap(PublishGroundTruthResponse& a, PublishGroundTruthResponse& b) {
     a.Swap(&b);
@@ -4610,7 +4770,7 @@ class PublishImuResponse final :
                &_PublishImuResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    27;
+    28;
 
   friend void swap(PublishImuResponse& a, PublishImuResponse& b) {
     a.Swap(&b);
@@ -4758,7 +4918,7 @@ class PublishScaledImuResponse final :
                &_PublishScaledImuResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    28;
+    29;
 
   friend void swap(PublishScaledImuResponse& a, PublishScaledImuResponse& b) {
     a.Swap(&b);
@@ -4906,7 +5066,7 @@ class PublishRawImuResponse final :
                &_PublishRawImuResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    29;
+    30;
 
   friend void swap(PublishRawImuResponse& a, PublishRawImuResponse& b) {
     a.Swap(&b);
@@ -5054,7 +5214,7 @@ class PublishUnixEpochTimeResponse final :
                &_PublishUnixEpochTimeResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    30;
+    31;
 
   friend void swap(PublishUnixEpochTimeResponse& a, PublishUnixEpochTimeResponse& b) {
     a.Swap(&b);
@@ -5158,6 +5318,154 @@ class PublishUnixEpochTimeResponse final :
 };
 // -------------------------------------------------------------------
 
+class PublishSubakInfoResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:mavsdk.rpc.telemetry_server.PublishSubakInfoResponse) */ {
+ public:
+  inline PublishSubakInfoResponse() : PublishSubakInfoResponse(nullptr) {}
+  ~PublishSubakInfoResponse() override;
+  explicit constexpr PublishSubakInfoResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  PublishSubakInfoResponse(const PublishSubakInfoResponse& from);
+  PublishSubakInfoResponse(PublishSubakInfoResponse&& from) noexcept
+    : PublishSubakInfoResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline PublishSubakInfoResponse& operator=(const PublishSubakInfoResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline PublishSubakInfoResponse& operator=(PublishSubakInfoResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const PublishSubakInfoResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const PublishSubakInfoResponse* internal_default_instance() {
+    return reinterpret_cast<const PublishSubakInfoResponse*>(
+               &_PublishSubakInfoResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    32;
+
+  friend void swap(PublishSubakInfoResponse& a, PublishSubakInfoResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(PublishSubakInfoResponse* other) {
+    if (other == this) return;
+    if (GetOwningArena() == other->GetOwningArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(PublishSubakInfoResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline PublishSubakInfoResponse* New() const final {
+    return new PublishSubakInfoResponse();
+  }
+
+  PublishSubakInfoResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<PublishSubakInfoResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const PublishSubakInfoResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const PublishSubakInfoResponse& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to, const ::PROTOBUF_NAMESPACE_ID::Message&from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(PublishSubakInfoResponse* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "mavsdk.rpc.telemetry_server.PublishSubakInfoResponse";
+  }
+  protected:
+  explicit PublishSubakInfoResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kSubakInfoFieldNumber = 1,
+  };
+  // .mavsdk.rpc.telemetry_server.SubakInfo subak_info = 1;
+  bool has_subak_info() const;
+  private:
+  bool _internal_has_subak_info() const;
+  public:
+  void clear_subak_info();
+  const ::mavsdk::rpc::telemetry_server::SubakInfo& subak_info() const;
+  PROTOBUF_MUST_USE_RESULT ::mavsdk::rpc::telemetry_server::SubakInfo* release_subak_info();
+  ::mavsdk::rpc::telemetry_server::SubakInfo* mutable_subak_info();
+  void set_allocated_subak_info(::mavsdk::rpc::telemetry_server::SubakInfo* subak_info);
+  private:
+  const ::mavsdk::rpc::telemetry_server::SubakInfo& _internal_subak_info() const;
+  ::mavsdk::rpc::telemetry_server::SubakInfo* _internal_mutable_subak_info();
+  public:
+  void unsafe_arena_set_allocated_subak_info(
+      ::mavsdk::rpc::telemetry_server::SubakInfo* subak_info);
+  ::mavsdk::rpc::telemetry_server::SubakInfo* unsafe_arena_release_subak_info();
+
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.telemetry_server.PublishSubakInfoResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::mavsdk::rpc::telemetry_server::SubakInfo* subak_info_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_telemetry_5fserver_2ftelemetry_5fserver_2eproto;
+};
+// -------------------------------------------------------------------
+
 class Position final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:mavsdk.rpc.telemetry_server.Position) */ {
  public:
@@ -5202,7 +5510,7 @@ class Position final :
                &_Position_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    31;
+    33;
 
   friend void swap(Position& a, Position& b) {
     a.Swap(&b);
@@ -5374,7 +5682,7 @@ class Heading final :
                &_Heading_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    32;
+    34;
 
   friend void swap(Heading& a, Heading& b) {
     a.Swap(&b);
@@ -5513,7 +5821,7 @@ class Quaternion final :
                &_Quaternion_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    33;
+    35;
 
   friend void swap(Quaternion& a, Quaternion& b) {
     a.Swap(&b);
@@ -5696,7 +6004,7 @@ class EulerAngle final :
                &_EulerAngle_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    34;
+    36;
 
   friend void swap(EulerAngle& a, EulerAngle& b) {
     a.Swap(&b);
@@ -5868,7 +6176,7 @@ class AngularVelocityBody final :
                &_AngularVelocityBody_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    35;
+    37;
 
   friend void swap(AngularVelocityBody& a, AngularVelocityBody& b) {
     a.Swap(&b);
@@ -6029,7 +6337,7 @@ class GpsInfo final :
                &_GpsInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    36;
+    38;
 
   friend void swap(GpsInfo& a, GpsInfo& b) {
     a.Swap(&b);
@@ -6179,7 +6487,7 @@ class RawGps final :
                &_RawGps_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    37;
+    39;
 
   friend void swap(RawGps& a, RawGps& b) {
     a.Swap(&b);
@@ -6461,7 +6769,7 @@ class Battery final :
                &_Battery_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    38;
+    40;
 
   friend void swap(Battery& a, Battery& b) {
     a.Swap(&b);
@@ -6611,7 +6919,7 @@ class RcStatus final :
                &_RcStatus_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    39;
+    41;
 
   friend void swap(RcStatus& a, RcStatus& b) {
     a.Swap(&b);
@@ -6772,7 +7080,7 @@ class StatusText final :
                &_StatusText_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    40;
+    42;
 
   friend void swap(StatusText& a, StatusText& b) {
     a.Swap(&b);
@@ -6927,7 +7235,7 @@ class ActuatorControlTarget final :
                &_ActuatorControlTarget_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    41;
+    43;
 
   friend void swap(ActuatorControlTarget& a, ActuatorControlTarget& b) {
     a.Swap(&b);
@@ -7090,7 +7398,7 @@ class ActuatorOutputStatus final :
                &_ActuatorOutputStatus_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    42;
+    44;
 
   friend void swap(ActuatorOutputStatus& a, ActuatorOutputStatus& b) {
     a.Swap(&b);
@@ -7253,7 +7561,7 @@ class Covariance final :
                &_Covariance_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    43;
+    45;
 
   friend void swap(Covariance& a, Covariance& b) {
     a.Swap(&b);
@@ -7405,7 +7713,7 @@ class VelocityBody final :
                &_VelocityBody_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    44;
+    46;
 
   friend void swap(VelocityBody& a, VelocityBody& b) {
     a.Swap(&b);
@@ -7566,7 +7874,7 @@ class PositionBody final :
                &_PositionBody_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    45;
+    47;
 
   friend void swap(PositionBody& a, PositionBody& b) {
     a.Swap(&b);
@@ -7727,7 +8035,7 @@ class Odometry final :
                &_Odometry_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    46;
+    48;
 
   friend void swap(Odometry& a, Odometry& b) {
     a.Swap(&b);
@@ -8042,7 +8350,7 @@ class DistanceSensor final :
                &_DistanceSensor_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    47;
+    49;
 
   friend void swap(DistanceSensor& a, DistanceSensor& b) {
     a.Swap(&b);
@@ -8203,7 +8511,7 @@ class ScaledPressure final :
                &_ScaledPressure_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    48;
+    50;
 
   friend void swap(ScaledPressure& a, ScaledPressure& b) {
     a.Swap(&b);
@@ -8386,7 +8694,7 @@ class PositionNed final :
                &_PositionNed_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    49;
+    51;
 
   friend void swap(PositionNed& a, PositionNed& b) {
     a.Swap(&b);
@@ -8547,7 +8855,7 @@ class VelocityNed final :
                &_VelocityNed_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    50;
+    52;
 
   friend void swap(VelocityNed& a, VelocityNed& b) {
     a.Swap(&b);
@@ -8708,7 +9016,7 @@ class PositionVelocityNed final :
                &_PositionVelocityNed_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    51;
+    53;
 
   friend void swap(PositionVelocityNed& a, PositionVelocityNed& b) {
     a.Swap(&b);
@@ -8876,7 +9184,7 @@ class GroundTruth final :
                &_GroundTruth_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    52;
+    54;
 
   friend void swap(GroundTruth& a, GroundTruth& b) {
     a.Swap(&b);
@@ -9037,7 +9345,7 @@ class FixedwingMetrics final :
                &_FixedwingMetrics_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    53;
+    55;
 
   friend void swap(FixedwingMetrics& a, FixedwingMetrics& b) {
     a.Swap(&b);
@@ -9198,7 +9506,7 @@ class AccelerationFrd final :
                &_AccelerationFrd_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    54;
+    56;
 
   friend void swap(AccelerationFrd& a, AccelerationFrd& b) {
     a.Swap(&b);
@@ -9359,7 +9667,7 @@ class AngularVelocityFrd final :
                &_AngularVelocityFrd_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    55;
+    57;
 
   friend void swap(AngularVelocityFrd& a, AngularVelocityFrd& b) {
     a.Swap(&b);
@@ -9520,7 +9828,7 @@ class MagneticFieldFrd final :
                &_MagneticFieldFrd_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    56;
+    58;
 
   friend void swap(MagneticFieldFrd& a, MagneticFieldFrd& b) {
     a.Swap(&b);
@@ -9681,7 +9989,7 @@ class Imu final :
                &_Imu_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    57;
+    59;
 
   friend void swap(Imu& a, Imu& b) {
     a.Swap(&b);
@@ -9891,7 +10199,7 @@ class TelemetryServerResult final :
                &_TelemetryServerResult_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    58;
+    60;
 
   friend void swap(TelemetryServerResult& a, TelemetryServerResult& b) {
     a.Swap(&b);
@@ -10039,6 +10347,156 @@ class TelemetryServerResult final :
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr result_str_;
   int result_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_telemetry_5fserver_2ftelemetry_5fserver_2eproto;
+};
+// -------------------------------------------------------------------
+
+class SubakInfo final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:mavsdk.rpc.telemetry_server.SubakInfo) */ {
+ public:
+  inline SubakInfo() : SubakInfo(nullptr) {}
+  ~SubakInfo() override;
+  explicit constexpr SubakInfo(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  SubakInfo(const SubakInfo& from);
+  SubakInfo(SubakInfo&& from) noexcept
+    : SubakInfo() {
+    *this = ::std::move(from);
+  }
+
+  inline SubakInfo& operator=(const SubakInfo& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SubakInfo& operator=(SubakInfo&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SubakInfo& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SubakInfo* internal_default_instance() {
+    return reinterpret_cast<const SubakInfo*>(
+               &_SubakInfo_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    61;
+
+  friend void swap(SubakInfo& a, SubakInfo& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(SubakInfo* other) {
+    if (other == this) return;
+    if (GetOwningArena() == other->GetOwningArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SubakInfo* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline SubakInfo* New() const final {
+    return new SubakInfo();
+  }
+
+  SubakInfo* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<SubakInfo>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const SubakInfo& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const SubakInfo& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to, const ::PROTOBUF_NAMESPACE_ID::Message&from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(SubakInfo* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "mavsdk.rpc.telemetry_server.SubakInfo";
+  }
+  protected:
+  explicit SubakInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kXValueFieldNumber = 1,
+    kYValueFieldNumber = 2,
+  };
+  // float x_value = 1 [(.mavsdk.options.default_value) = "NaN"];
+  void clear_x_value();
+  float x_value() const;
+  void set_x_value(float value);
+  private:
+  float _internal_x_value() const;
+  void _internal_set_x_value(float value);
+  public:
+
+  // float y_value = 2 [(.mavsdk.options.default_value) = "NaN"];
+  void clear_y_value();
+  float y_value() const;
+  void set_y_value(float value);
+  private:
+  float _internal_y_value() const;
+  void _internal_set_y_value(float value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.telemetry_server.SubakInfo)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  float x_value_;
+  float y_value_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_telemetry_5fserver_2ftelemetry_5fserver_2eproto;
 };
@@ -11759,6 +12217,100 @@ inline void PublishUnixEpochTimeRequest::set_time_us(::PROTOBUF_NAMESPACE_ID::ui
 
 // -------------------------------------------------------------------
 
+// PublishSubakInfoRequest
+
+// .mavsdk.rpc.telemetry_server.SubakInfo subak_info = 1;
+inline bool PublishSubakInfoRequest::_internal_has_subak_info() const {
+  return this != internal_default_instance() && subak_info_ != nullptr;
+}
+inline bool PublishSubakInfoRequest::has_subak_info() const {
+  return _internal_has_subak_info();
+}
+inline void PublishSubakInfoRequest::clear_subak_info() {
+  if (GetArenaForAllocation() == nullptr && subak_info_ != nullptr) {
+    delete subak_info_;
+  }
+  subak_info_ = nullptr;
+}
+inline const ::mavsdk::rpc::telemetry_server::SubakInfo& PublishSubakInfoRequest::_internal_subak_info() const {
+  const ::mavsdk::rpc::telemetry_server::SubakInfo* p = subak_info_;
+  return p != nullptr ? *p : reinterpret_cast<const ::mavsdk::rpc::telemetry_server::SubakInfo&>(
+      ::mavsdk::rpc::telemetry_server::_SubakInfo_default_instance_);
+}
+inline const ::mavsdk::rpc::telemetry_server::SubakInfo& PublishSubakInfoRequest::subak_info() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.telemetry_server.PublishSubakInfoRequest.subak_info)
+  return _internal_subak_info();
+}
+inline void PublishSubakInfoRequest::unsafe_arena_set_allocated_subak_info(
+    ::mavsdk::rpc::telemetry_server::SubakInfo* subak_info) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(subak_info_);
+  }
+  subak_info_ = subak_info;
+  if (subak_info) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:mavsdk.rpc.telemetry_server.PublishSubakInfoRequest.subak_info)
+}
+inline ::mavsdk::rpc::telemetry_server::SubakInfo* PublishSubakInfoRequest::release_subak_info() {
+  
+  ::mavsdk::rpc::telemetry_server::SubakInfo* temp = subak_info_;
+  subak_info_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::mavsdk::rpc::telemetry_server::SubakInfo* PublishSubakInfoRequest::unsafe_arena_release_subak_info() {
+  // @@protoc_insertion_point(field_release:mavsdk.rpc.telemetry_server.PublishSubakInfoRequest.subak_info)
+  
+  ::mavsdk::rpc::telemetry_server::SubakInfo* temp = subak_info_;
+  subak_info_ = nullptr;
+  return temp;
+}
+inline ::mavsdk::rpc::telemetry_server::SubakInfo* PublishSubakInfoRequest::_internal_mutable_subak_info() {
+  
+  if (subak_info_ == nullptr) {
+    auto* p = CreateMaybeMessage<::mavsdk::rpc::telemetry_server::SubakInfo>(GetArenaForAllocation());
+    subak_info_ = p;
+  }
+  return subak_info_;
+}
+inline ::mavsdk::rpc::telemetry_server::SubakInfo* PublishSubakInfoRequest::mutable_subak_info() {
+  ::mavsdk::rpc::telemetry_server::SubakInfo* _msg = _internal_mutable_subak_info();
+  // @@protoc_insertion_point(field_mutable:mavsdk.rpc.telemetry_server.PublishSubakInfoRequest.subak_info)
+  return _msg;
+}
+inline void PublishSubakInfoRequest::set_allocated_subak_info(::mavsdk::rpc::telemetry_server::SubakInfo* subak_info) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete subak_info_;
+  }
+  if (subak_info) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::mavsdk::rpc::telemetry_server::SubakInfo>::GetOwningArena(subak_info);
+    if (message_arena != submessage_arena) {
+      subak_info = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, subak_info, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  subak_info_ = subak_info;
+  // @@protoc_insertion_point(field_set_allocated:mavsdk.rpc.telemetry_server.PublishSubakInfoRequest.subak_info)
+}
+
+// -------------------------------------------------------------------
+
 // PublishPositionResponse
 
 // .mavsdk.rpc.telemetry_server.TelemetryServerResult telemetry_server_result = 1;
@@ -13071,6 +13623,100 @@ inline void PublishUnixEpochTimeResponse::set_allocated_telemetry_server_result(
   }
   telemetry_server_result_ = telemetry_server_result;
   // @@protoc_insertion_point(field_set_allocated:mavsdk.rpc.telemetry_server.PublishUnixEpochTimeResponse.telemetry_server_result)
+}
+
+// -------------------------------------------------------------------
+
+// PublishSubakInfoResponse
+
+// .mavsdk.rpc.telemetry_server.SubakInfo subak_info = 1;
+inline bool PublishSubakInfoResponse::_internal_has_subak_info() const {
+  return this != internal_default_instance() && subak_info_ != nullptr;
+}
+inline bool PublishSubakInfoResponse::has_subak_info() const {
+  return _internal_has_subak_info();
+}
+inline void PublishSubakInfoResponse::clear_subak_info() {
+  if (GetArenaForAllocation() == nullptr && subak_info_ != nullptr) {
+    delete subak_info_;
+  }
+  subak_info_ = nullptr;
+}
+inline const ::mavsdk::rpc::telemetry_server::SubakInfo& PublishSubakInfoResponse::_internal_subak_info() const {
+  const ::mavsdk::rpc::telemetry_server::SubakInfo* p = subak_info_;
+  return p != nullptr ? *p : reinterpret_cast<const ::mavsdk::rpc::telemetry_server::SubakInfo&>(
+      ::mavsdk::rpc::telemetry_server::_SubakInfo_default_instance_);
+}
+inline const ::mavsdk::rpc::telemetry_server::SubakInfo& PublishSubakInfoResponse::subak_info() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.telemetry_server.PublishSubakInfoResponse.subak_info)
+  return _internal_subak_info();
+}
+inline void PublishSubakInfoResponse::unsafe_arena_set_allocated_subak_info(
+    ::mavsdk::rpc::telemetry_server::SubakInfo* subak_info) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(subak_info_);
+  }
+  subak_info_ = subak_info;
+  if (subak_info) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:mavsdk.rpc.telemetry_server.PublishSubakInfoResponse.subak_info)
+}
+inline ::mavsdk::rpc::telemetry_server::SubakInfo* PublishSubakInfoResponse::release_subak_info() {
+  
+  ::mavsdk::rpc::telemetry_server::SubakInfo* temp = subak_info_;
+  subak_info_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::mavsdk::rpc::telemetry_server::SubakInfo* PublishSubakInfoResponse::unsafe_arena_release_subak_info() {
+  // @@protoc_insertion_point(field_release:mavsdk.rpc.telemetry_server.PublishSubakInfoResponse.subak_info)
+  
+  ::mavsdk::rpc::telemetry_server::SubakInfo* temp = subak_info_;
+  subak_info_ = nullptr;
+  return temp;
+}
+inline ::mavsdk::rpc::telemetry_server::SubakInfo* PublishSubakInfoResponse::_internal_mutable_subak_info() {
+  
+  if (subak_info_ == nullptr) {
+    auto* p = CreateMaybeMessage<::mavsdk::rpc::telemetry_server::SubakInfo>(GetArenaForAllocation());
+    subak_info_ = p;
+  }
+  return subak_info_;
+}
+inline ::mavsdk::rpc::telemetry_server::SubakInfo* PublishSubakInfoResponse::mutable_subak_info() {
+  ::mavsdk::rpc::telemetry_server::SubakInfo* _msg = _internal_mutable_subak_info();
+  // @@protoc_insertion_point(field_mutable:mavsdk.rpc.telemetry_server.PublishSubakInfoResponse.subak_info)
+  return _msg;
+}
+inline void PublishSubakInfoResponse::set_allocated_subak_info(::mavsdk::rpc::telemetry_server::SubakInfo* subak_info) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete subak_info_;
+  }
+  if (subak_info) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::mavsdk::rpc::telemetry_server::SubakInfo>::GetOwningArena(subak_info);
+    if (message_arena != submessage_arena) {
+      subak_info = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, subak_info, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  subak_info_ = subak_info;
+  // @@protoc_insertion_point(field_set_allocated:mavsdk.rpc.telemetry_server.PublishSubakInfoResponse.subak_info)
 }
 
 // -------------------------------------------------------------------
@@ -16048,9 +16694,59 @@ inline void TelemetryServerResult::set_allocated_result_str(std::string* result_
   // @@protoc_insertion_point(field_set_allocated:mavsdk.rpc.telemetry_server.TelemetryServerResult.result_str)
 }
 
+// -------------------------------------------------------------------
+
+// SubakInfo
+
+// float x_value = 1 [(.mavsdk.options.default_value) = "NaN"];
+inline void SubakInfo::clear_x_value() {
+  x_value_ = 0;
+}
+inline float SubakInfo::_internal_x_value() const {
+  return x_value_;
+}
+inline float SubakInfo::x_value() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.telemetry_server.SubakInfo.x_value)
+  return _internal_x_value();
+}
+inline void SubakInfo::_internal_set_x_value(float value) {
+  
+  x_value_ = value;
+}
+inline void SubakInfo::set_x_value(float value) {
+  _internal_set_x_value(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.telemetry_server.SubakInfo.x_value)
+}
+
+// float y_value = 2 [(.mavsdk.options.default_value) = "NaN"];
+inline void SubakInfo::clear_y_value() {
+  y_value_ = 0;
+}
+inline float SubakInfo::_internal_y_value() const {
+  return y_value_;
+}
+inline float SubakInfo::y_value() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.telemetry_server.SubakInfo.y_value)
+  return _internal_y_value();
+}
+inline void SubakInfo::_internal_set_y_value(float value) {
+  
+  y_value_ = value;
+}
+inline void SubakInfo::set_y_value(float value) {
+  _internal_set_y_value(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.telemetry_server.SubakInfo.y_value)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

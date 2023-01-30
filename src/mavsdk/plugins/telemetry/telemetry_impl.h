@@ -109,6 +109,7 @@ public:
     Telemetry::ScaledPressure scaled_pressure() const;
     uint64_t unix_epoch_time() const;
     Telemetry::Heading heading() const;
+    Telemetry::SubakInfo subak_info() const;
 
     void subscribe_position_velocity_ned(Telemetry::PositionVelocityNedCallback& callback);
     void subscribe_position(Telemetry::PositionCallback& callback);
@@ -144,7 +145,7 @@ public:
     void subscribe_distance_sensor(Telemetry::DistanceSensorCallback& callback);
     void subscribe_scaled_pressure(Telemetry::ScaledPressureCallback& callback);
     void subscribe_heading(Telemetry::HeadingCallback& callback);
-    // void subscribe_subak_info(Telemetry::SubakInfoCallback& callback);
+    void subscribe_subak_info(Telemetry::SubakInfoCallback& callback);
 
     TelemetryImpl(const TelemetryImpl&) = delete;
     TelemetryImpl& operator=(const TelemetryImpl&) = delete;
@@ -185,6 +186,7 @@ private:
     void set_distance_sensor(Telemetry::DistanceSensor& distance_sensor);
     void set_scaled_pressure(Telemetry::ScaledPressure& scaled_pressure);
     void set_heading(Telemetry::Heading heading);
+    void set_subak_info(Telemetry::SubakInfo subak_info);
 
     void process_position_velocity_ned(const mavlink_message_t& message);
     void process_global_position_int(const mavlink_message_t& message);
@@ -264,6 +266,9 @@ private:
 
     mutable std::mutex _home_position_mutex{};
     Telemetry::Position _home_position{};
+
+    mutable std::mutex _subak_info_mutex{};
+    Telemetry::SubakInfo _subak_info{};
 
     // If possible, just use atomic instead of a mutex.
     std::atomic_bool _in_air{false};
@@ -375,6 +380,8 @@ private:
     Telemetry::DistanceSensorCallback _distance_sensor_subscription{nullptr};
     Telemetry::ScaledPressureCallback _scaled_pressure_subscription{nullptr};
     Telemetry::HeadingCallback _heading_subscription{nullptr};
+    Telemetry::SubakInfoCallback _subak_info_subscription{nullptr};
+
 
     // The velocity (former ground speed) and position are coupled to the same message, therefore,
     // we just use the faster between the two.

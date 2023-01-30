@@ -423,6 +423,12 @@ TelemetryServer::Result TelemetryServerImpl::publish_extended_sys_state(
                                         TelemetryServer::Result::Unsupported;
 }
 
+TelemetryServer::Result TelemetryServerImpl::publish_subak_info(TelemetryServer::SubakInfo subak_info){
+    mavlink_message_t msg;
+    //ToDo
+}
+
+
 void TelemetryServerImpl::add_msg_cache(uint64_t id, mavlink_message_t& msg)
 {
     std::unique_lock<std::mutex> lock(_interval_mutex);

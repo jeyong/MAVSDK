@@ -12,8 +12,12 @@ EOF
 }
 
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-proto_dir="${script_dir}/../proto/protos"
-build_dir="${script_dir}/../build/default"
+# proto_dir="${script_dir}/../proto/protos"
+# build_dir="${script_dir}/../build/default"
+proto_dir="/home/jeyong/projects/MAVSDK/proto/protos"
+build_dir="/home/jeyong/projects/MAVSDK/build/default"
+echo "----{$build_dir}"
+
 
 options=$(getopt -l "help,build-dir:" -o "hb:" -a -- "$@")
 

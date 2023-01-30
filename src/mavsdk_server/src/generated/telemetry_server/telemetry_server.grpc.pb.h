@@ -152,6 +152,14 @@ class TelemetryServerService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeResponse>> PrepareAsyncPublishUnixEpochTime(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeResponse>>(PrepareAsyncPublishUnixEpochTimeRaw(context, request, cq));
     }
+    // Publish to 'Subak Info' updates.
+    virtual ::grpc::Status PublishSubakInfo(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishSubakInfoRequest& request, ::mavsdk::rpc::telemetry_server::PublishSubakInfoResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::telemetry_server::PublishSubakInfoResponse>> AsyncPublishSubakInfo(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishSubakInfoRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::telemetry_server::PublishSubakInfoResponse>>(AsyncPublishSubakInfoRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::telemetry_server::PublishSubakInfoResponse>> PrepareAsyncPublishSubakInfo(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishSubakInfoRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::telemetry_server::PublishSubakInfoResponse>>(PrepareAsyncPublishSubakInfoRaw(context, request, cq));
+    }
     class async_interface {
      public:
       virtual ~async_interface() {}
@@ -197,6 +205,9 @@ class TelemetryServerService final {
       // Publish to 'unix epoch time' updates.
       virtual void PublishUnixEpochTime(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeRequest* request, ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void PublishUnixEpochTime(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeRequest* request, ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      // Publish to 'Subak Info' updates.
+      virtual void PublishSubakInfo(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishSubakInfoRequest* request, ::mavsdk::rpc::telemetry_server::PublishSubakInfoResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void PublishSubakInfo(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishSubakInfoRequest* request, ::mavsdk::rpc::telemetry_server::PublishSubakInfoResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
@@ -230,6 +241,8 @@ class TelemetryServerService final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::telemetry_server::PublishRawImuResponse>* PrepareAsyncPublishRawImuRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishRawImuRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeResponse>* AsyncPublishUnixEpochTimeRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeResponse>* PrepareAsyncPublishUnixEpochTimeRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::telemetry_server::PublishSubakInfoResponse>* AsyncPublishSubakInfoRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishSubakInfoRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::telemetry_server::PublishSubakInfoResponse>* PrepareAsyncPublishSubakInfoRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishSubakInfoRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -332,6 +345,13 @@ class TelemetryServerService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeResponse>> PrepareAsyncPublishUnixEpochTime(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeResponse>>(PrepareAsyncPublishUnixEpochTimeRaw(context, request, cq));
     }
+    ::grpc::Status PublishSubakInfo(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishSubakInfoRequest& request, ::mavsdk::rpc::telemetry_server::PublishSubakInfoResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishSubakInfoResponse>> AsyncPublishSubakInfo(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishSubakInfoRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishSubakInfoResponse>>(AsyncPublishSubakInfoRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishSubakInfoResponse>> PrepareAsyncPublishSubakInfo(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishSubakInfoRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishSubakInfoResponse>>(PrepareAsyncPublishSubakInfoRaw(context, request, cq));
+    }
     class async final :
       public StubInterface::async_interface {
      public:
@@ -363,6 +383,8 @@ class TelemetryServerService final {
       void PublishRawImu(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishRawImuRequest* request, ::mavsdk::rpc::telemetry_server::PublishRawImuResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void PublishUnixEpochTime(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeRequest* request, ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeResponse* response, std::function<void(::grpc::Status)>) override;
       void PublishUnixEpochTime(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeRequest* request, ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void PublishSubakInfo(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishSubakInfoRequest* request, ::mavsdk::rpc::telemetry_server::PublishSubakInfoResponse* response, std::function<void(::grpc::Status)>) override;
+      void PublishSubakInfo(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishSubakInfoRequest* request, ::mavsdk::rpc::telemetry_server::PublishSubakInfoResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -402,6 +424,8 @@ class TelemetryServerService final {
     ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishRawImuResponse>* PrepareAsyncPublishRawImuRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishRawImuRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeResponse>* AsyncPublishUnixEpochTimeRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeResponse>* PrepareAsyncPublishUnixEpochTimeRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishSubakInfoResponse>* AsyncPublishSubakInfoRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishSubakInfoRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::telemetry_server::PublishSubakInfoResponse>* PrepareAsyncPublishSubakInfoRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::telemetry_server::PublishSubakInfoRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_PublishPosition_;
     const ::grpc::internal::RpcMethod rpcmethod_PublishHome_;
     const ::grpc::internal::RpcMethod rpcmethod_PublishSysStatus_;
@@ -416,6 +440,7 @@ class TelemetryServerService final {
     const ::grpc::internal::RpcMethod rpcmethod_PublishScaledImu_;
     const ::grpc::internal::RpcMethod rpcmethod_PublishRawImu_;
     const ::grpc::internal::RpcMethod rpcmethod_PublishUnixEpochTime_;
+    const ::grpc::internal::RpcMethod rpcmethod_PublishSubakInfo_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -451,6 +476,8 @@ class TelemetryServerService final {
     virtual ::grpc::Status PublishRawImu(::grpc::ServerContext* context, const ::mavsdk::rpc::telemetry_server::PublishRawImuRequest* request, ::mavsdk::rpc::telemetry_server::PublishRawImuResponse* response);
     // Publish to 'unix epoch time' updates.
     virtual ::grpc::Status PublishUnixEpochTime(::grpc::ServerContext* context, const ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeRequest* request, ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeResponse* response);
+    // Publish to 'Subak Info' updates.
+    virtual ::grpc::Status PublishSubakInfo(::grpc::ServerContext* context, const ::mavsdk::rpc::telemetry_server::PublishSubakInfoRequest* request, ::mavsdk::rpc::telemetry_server::PublishSubakInfoResponse* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_PublishPosition : public BaseClass {
@@ -732,7 +759,27 @@ class TelemetryServerService final {
       ::grpc::Service::RequestAsyncUnary(13, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_PublishPosition<WithAsyncMethod_PublishHome<WithAsyncMethod_PublishSysStatus<WithAsyncMethod_PublishExtendedSysState<WithAsyncMethod_PublishRawGps<WithAsyncMethod_PublishBattery<WithAsyncMethod_PublishStatusText<WithAsyncMethod_PublishOdometry<WithAsyncMethod_PublishPositionVelocityNed<WithAsyncMethod_PublishGroundTruth<WithAsyncMethod_PublishImu<WithAsyncMethod_PublishScaledImu<WithAsyncMethod_PublishRawImu<WithAsyncMethod_PublishUnixEpochTime<Service > > > > > > > > > > > > > > AsyncService;
+  template <class BaseClass>
+  class WithAsyncMethod_PublishSubakInfo : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_PublishSubakInfo() {
+      ::grpc::Service::MarkMethodAsync(14);
+    }
+    ~WithAsyncMethod_PublishSubakInfo() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status PublishSubakInfo(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::telemetry_server::PublishSubakInfoRequest* /*request*/, ::mavsdk::rpc::telemetry_server::PublishSubakInfoResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestPublishSubakInfo(::grpc::ServerContext* context, ::mavsdk::rpc::telemetry_server::PublishSubakInfoRequest* request, ::grpc::ServerAsyncResponseWriter< ::mavsdk::rpc::telemetry_server::PublishSubakInfoResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(14, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_PublishPosition<WithAsyncMethod_PublishHome<WithAsyncMethod_PublishSysStatus<WithAsyncMethod_PublishExtendedSysState<WithAsyncMethod_PublishRawGps<WithAsyncMethod_PublishBattery<WithAsyncMethod_PublishStatusText<WithAsyncMethod_PublishOdometry<WithAsyncMethod_PublishPositionVelocityNed<WithAsyncMethod_PublishGroundTruth<WithAsyncMethod_PublishImu<WithAsyncMethod_PublishScaledImu<WithAsyncMethod_PublishRawImu<WithAsyncMethod_PublishUnixEpochTime<WithAsyncMethod_PublishSubakInfo<Service > > > > > > > > > > > > > > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_PublishPosition : public BaseClass {
    private:
@@ -1111,7 +1158,34 @@ class TelemetryServerService final {
     virtual ::grpc::ServerUnaryReactor* PublishUnixEpochTime(
       ::grpc::CallbackServerContext* /*context*/, const ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeRequest* /*request*/, ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeResponse* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_PublishPosition<WithCallbackMethod_PublishHome<WithCallbackMethod_PublishSysStatus<WithCallbackMethod_PublishExtendedSysState<WithCallbackMethod_PublishRawGps<WithCallbackMethod_PublishBattery<WithCallbackMethod_PublishStatusText<WithCallbackMethod_PublishOdometry<WithCallbackMethod_PublishPositionVelocityNed<WithCallbackMethod_PublishGroundTruth<WithCallbackMethod_PublishImu<WithCallbackMethod_PublishScaledImu<WithCallbackMethod_PublishRawImu<WithCallbackMethod_PublishUnixEpochTime<Service > > > > > > > > > > > > > > CallbackService;
+  template <class BaseClass>
+  class WithCallbackMethod_PublishSubakInfo : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_PublishSubakInfo() {
+      ::grpc::Service::MarkMethodCallback(14,
+          new ::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::telemetry_server::PublishSubakInfoRequest, ::mavsdk::rpc::telemetry_server::PublishSubakInfoResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::mavsdk::rpc::telemetry_server::PublishSubakInfoRequest* request, ::mavsdk::rpc::telemetry_server::PublishSubakInfoResponse* response) { return this->PublishSubakInfo(context, request, response); }));}
+    void SetMessageAllocatorFor_PublishSubakInfo(
+        ::grpc::MessageAllocator< ::mavsdk::rpc::telemetry_server::PublishSubakInfoRequest, ::mavsdk::rpc::telemetry_server::PublishSubakInfoResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(14);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::telemetry_server::PublishSubakInfoRequest, ::mavsdk::rpc::telemetry_server::PublishSubakInfoResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_PublishSubakInfo() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status PublishSubakInfo(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::telemetry_server::PublishSubakInfoRequest* /*request*/, ::mavsdk::rpc::telemetry_server::PublishSubakInfoResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* PublishSubakInfo(
+      ::grpc::CallbackServerContext* /*context*/, const ::mavsdk::rpc::telemetry_server::PublishSubakInfoRequest* /*request*/, ::mavsdk::rpc::telemetry_server::PublishSubakInfoResponse* /*response*/)  { return nullptr; }
+  };
+  typedef WithCallbackMethod_PublishPosition<WithCallbackMethod_PublishHome<WithCallbackMethod_PublishSysStatus<WithCallbackMethod_PublishExtendedSysState<WithCallbackMethod_PublishRawGps<WithCallbackMethod_PublishBattery<WithCallbackMethod_PublishStatusText<WithCallbackMethod_PublishOdometry<WithCallbackMethod_PublishPositionVelocityNed<WithCallbackMethod_PublishGroundTruth<WithCallbackMethod_PublishImu<WithCallbackMethod_PublishScaledImu<WithCallbackMethod_PublishRawImu<WithCallbackMethod_PublishUnixEpochTime<WithCallbackMethod_PublishSubakInfo<Service > > > > > > > > > > > > > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_PublishPosition : public BaseClass {
@@ -1347,6 +1421,23 @@ class TelemetryServerService final {
     }
     // disable synchronous version of this method
     ::grpc::Status PublishUnixEpochTime(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeRequest* /*request*/, ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_PublishSubakInfo : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_PublishSubakInfo() {
+      ::grpc::Service::MarkMethodGeneric(14);
+    }
+    ~WithGenericMethod_PublishSubakInfo() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status PublishSubakInfo(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::telemetry_server::PublishSubakInfoRequest* /*request*/, ::mavsdk::rpc::telemetry_server::PublishSubakInfoResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1629,6 +1720,26 @@ class TelemetryServerService final {
     }
     void RequestPublishUnixEpochTime(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(13, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_PublishSubakInfo : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_PublishSubakInfo() {
+      ::grpc::Service::MarkMethodRaw(14);
+    }
+    ~WithRawMethod_PublishSubakInfo() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status PublishSubakInfo(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::telemetry_server::PublishSubakInfoRequest* /*request*/, ::mavsdk::rpc::telemetry_server::PublishSubakInfoResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestPublishSubakInfo(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(14, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1937,6 +2048,28 @@ class TelemetryServerService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerUnaryReactor* PublishUnixEpochTime(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_PublishSubakInfo : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_PublishSubakInfo() {
+      ::grpc::Service::MarkMethodRawCallback(14,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->PublishSubakInfo(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_PublishSubakInfo() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status PublishSubakInfo(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::telemetry_server::PublishSubakInfoRequest* /*request*/, ::mavsdk::rpc::telemetry_server::PublishSubakInfoResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* PublishSubakInfo(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
@@ -2317,9 +2450,36 @@ class TelemetryServerService final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedPublishUnixEpochTime(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeRequest,::mavsdk::rpc::telemetry_server::PublishUnixEpochTimeResponse>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_PublishPosition<WithStreamedUnaryMethod_PublishHome<WithStreamedUnaryMethod_PublishSysStatus<WithStreamedUnaryMethod_PublishExtendedSysState<WithStreamedUnaryMethod_PublishRawGps<WithStreamedUnaryMethod_PublishBattery<WithStreamedUnaryMethod_PublishStatusText<WithStreamedUnaryMethod_PublishOdometry<WithStreamedUnaryMethod_PublishPositionVelocityNed<WithStreamedUnaryMethod_PublishGroundTruth<WithStreamedUnaryMethod_PublishImu<WithStreamedUnaryMethod_PublishScaledImu<WithStreamedUnaryMethod_PublishRawImu<WithStreamedUnaryMethod_PublishUnixEpochTime<Service > > > > > > > > > > > > > > StreamedUnaryService;
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_PublishSubakInfo : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_PublishSubakInfo() {
+      ::grpc::Service::MarkMethodStreamed(14,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::mavsdk::rpc::telemetry_server::PublishSubakInfoRequest, ::mavsdk::rpc::telemetry_server::PublishSubakInfoResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::mavsdk::rpc::telemetry_server::PublishSubakInfoRequest, ::mavsdk::rpc::telemetry_server::PublishSubakInfoResponse>* streamer) {
+                       return this->StreamedPublishSubakInfo(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_PublishSubakInfo() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status PublishSubakInfo(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::telemetry_server::PublishSubakInfoRequest* /*request*/, ::mavsdk::rpc::telemetry_server::PublishSubakInfoResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedPublishSubakInfo(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::mavsdk::rpc::telemetry_server::PublishSubakInfoRequest,::mavsdk::rpc::telemetry_server::PublishSubakInfoResponse>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_PublishPosition<WithStreamedUnaryMethod_PublishHome<WithStreamedUnaryMethod_PublishSysStatus<WithStreamedUnaryMethod_PublishExtendedSysState<WithStreamedUnaryMethod_PublishRawGps<WithStreamedUnaryMethod_PublishBattery<WithStreamedUnaryMethod_PublishStatusText<WithStreamedUnaryMethod_PublishOdometry<WithStreamedUnaryMethod_PublishPositionVelocityNed<WithStreamedUnaryMethod_PublishGroundTruth<WithStreamedUnaryMethod_PublishImu<WithStreamedUnaryMethod_PublishScaledImu<WithStreamedUnaryMethod_PublishRawImu<WithStreamedUnaryMethod_PublishUnixEpochTime<WithStreamedUnaryMethod_PublishSubakInfo<Service > > > > > > > > > > > > > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_PublishPosition<WithStreamedUnaryMethod_PublishHome<WithStreamedUnaryMethod_PublishSysStatus<WithStreamedUnaryMethod_PublishExtendedSysState<WithStreamedUnaryMethod_PublishRawGps<WithStreamedUnaryMethod_PublishBattery<WithStreamedUnaryMethod_PublishStatusText<WithStreamedUnaryMethod_PublishOdometry<WithStreamedUnaryMethod_PublishPositionVelocityNed<WithStreamedUnaryMethod_PublishGroundTruth<WithStreamedUnaryMethod_PublishImu<WithStreamedUnaryMethod_PublishScaledImu<WithStreamedUnaryMethod_PublishRawImu<WithStreamedUnaryMethod_PublishUnixEpochTime<Service > > > > > > > > > > > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_PublishPosition<WithStreamedUnaryMethod_PublishHome<WithStreamedUnaryMethod_PublishSysStatus<WithStreamedUnaryMethod_PublishExtendedSysState<WithStreamedUnaryMethod_PublishRawGps<WithStreamedUnaryMethod_PublishBattery<WithStreamedUnaryMethod_PublishStatusText<WithStreamedUnaryMethod_PublishOdometry<WithStreamedUnaryMethod_PublishPositionVelocityNed<WithStreamedUnaryMethod_PublishGroundTruth<WithStreamedUnaryMethod_PublishImu<WithStreamedUnaryMethod_PublishScaledImu<WithStreamedUnaryMethod_PublishRawImu<WithStreamedUnaryMethod_PublishUnixEpochTime<WithStreamedUnaryMethod_PublishSubakInfo<Service > > > > > > > > > > > > > > > StreamedService;
 };
 
 }  // namespace telemetry_server

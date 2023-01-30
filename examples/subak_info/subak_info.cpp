@@ -93,12 +93,12 @@ int main(int argc, char** argv)
         std::cout << "Altitude: " << position.relative_altitude_m << " m\n";
     });
 
-/*
-    telemetry.subscribe_subakinfo([](Telemetry::SubakInfo subak_info) {
-        std::cout << "subakinfo.x_value: " << subak_info.x_value << " m\n";
-        std::cout << "subakinfo.y_value: " << subak_info.y_value << " m\n";
+
+    telemetry.subscribe_subak_info([](Telemetry::SubakInfo subak_info) {
+        std::cout << "**** subakinfo.x_value: " << subak_info.x_value << " m\n";
+        std::cout << "**** subakinfo.y_value: " << subak_info.y_value << " m\n";
     });
-*/
+
 
     // Check until vehicle is ready to arm
     while (telemetry.health_all_ok() != true) {

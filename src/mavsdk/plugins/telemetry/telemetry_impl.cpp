@@ -901,18 +901,19 @@ void TelemetryImpl::process_subak_info(const mavlink_message_t& message)
 {
     mavlink_subak_info_t subak_info_reading;
     mavlink_msg_subak_info_decode(&message, &subak_info_reading);
-    /*
+    
     Telemetry::SubakInfo new_subakinfo;
     new_subakinfo.x_value = subak_info_reading.x_value;
     new_subakinfo.y_value = subak_info_reading.y_value;
 
+    set_subak_info(new_subakinfo);
     std::lock_guard<std::mutex> lock(_subscription_mutex);
     if (_subak_info_subscription) {
         auto callback = _subak_info_subscription;
-        auto arg = scaled_imu();
+        auto arg = subak_info();
         _parent->call_user_callback([callback, arg]() { callback(arg); });
     }
-    */
+    
 }
 
 void TelemetryImpl::process_raw_imu(const mavlink_message_t& message)
@@ -1766,6 +1767,13 @@ Telemetry::Heading TelemetryImpl::heading() const
     return _heading;
 }
 
+Telemetry::SubakInfo TelemetryImpl::subak_info() const 
+{
+    std::lock_guard<std::mutex> lock(_subak_info_mutex);
+    return _subak_info;
+
+}
+
 void TelemetryImpl::set_heading(Telemetry::Heading heading)
 {
     std::lock_guard<std::mutex> lock(_heading_mutex);
@@ -1934,6 +1942,11 @@ Telemetry::Imu TelemetryImpl::raw_imu() const
 {
     std::lock_guard<std::mutex> lock(_raw_imu_mutex);
     return _raw_imu;
+}
+void TelemetryImpl::set_subak_info(Telemetry::SubakInfo subak_info)
+{
+    std::lock_guard<std::mutex> lock(_subak_info_mutex);
+    _subak_info = subak_info;
 }
 
 void TelemetryImpl::set_raw_imu(Telemetry::Imu raw_imu)
@@ -2373,13 +2386,13 @@ void TelemetryImpl::subscribe_heading(Telemetry::HeadingCallback& callback)
     _heading_subscription = callback;
 }
 
-/*
+
 void TelemetryImpl::subscribe_subak_info(Telemetry::SubakInfoCallback& callback)
 {
     std::lock_guard<std::mutex> lock(_subscription_mutex);
     _subak_info_subscription = callback;
 }
-*/
+
 
 void TelemetryImpl::request_home_position_async()
 {
